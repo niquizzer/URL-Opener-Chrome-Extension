@@ -1,0 +1,11 @@
+{
+    "name": "URL Opener",
+    "description": "Use this tool to open a group of URL's at once",
+    "version": "1.0",
+    "manifest_version": 3,
+    "permissions": ["tabs", "storage"],
+    "action": {
+        "default_popup": "popup.html"
+    }
+
+}
