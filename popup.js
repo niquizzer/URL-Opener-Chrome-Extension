@@ -37,7 +37,8 @@ submit.addEventListener("click", function() {
       
       });
       
-
+  console.log(inputText);
+  
     }
   }
   )
