@@ -7,19 +7,22 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if(result.savedUrls) {
 
+      result.savedUrls.split('\n');
+
+      console.log(`Links formatted ${result.savedUrls}`);
+
       links.innerText = result.savedUrls;
 
-      console.log("Previous links returned");
+      console.log(`Previous links returned: ${result.savedUrls}`);
 
     }
-  
   })
 
 })
 
 submit.addEventListener("click", function() {
 
-  let inputText = [];
+  let inputText;
   
   inputText = links.value;
 
@@ -36,9 +39,9 @@ submit.addEventListener("click", function() {
         url: trimmedUrl
       
       });
-      
-  console.log(inputText);
   
+      console.log(`This is the input logged on inputText: ${inputText}`);
+
     }
   }
   )
