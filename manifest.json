@@ -6,6 +6,19 @@
     "permissions": ["tabs", "storage"],
     "action": {
         "default_popup": "popup.html"
-    }
-
+    },
+    "content_scripts": [
+        {
+            "all_frames": true,
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "popup.js"
+            ],
+            "html" : [
+                "popup.html"
+            ]
+        }
+    ]
 }

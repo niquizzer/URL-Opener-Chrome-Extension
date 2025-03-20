@@ -16,44 +16,46 @@ document.addEventListener('DOMContentLoaded', async () => {
       console.log(`Previous links returned: ${result.savedUrls}`);
 
     }
-  })
+  });
 
-})
+});
 
-submit.addEventListener("click", function() {
+submit.addEventListener("click", createTabs);
 
-  let inputText;
+//Create new chrome tab function
+function createTabs(e) {
+
+  console.log('createTabs function executed');
   
-  inputText = links.value;
+  e = links.value;
 
-  let urls = inputText.split('\n');
+  let urls = e.split('\n');
 
   urls.forEach((url) => {
 
-    let trimmedUrl = url.trim(); // Removes extra spaces or hidden characters
+    let trimmedUrl = url.trim(); 
 
-    if (trimmedUrl) { // Ensures it's not an empty string
+    if (trimmedUrl) {
 
       chrome.tabs.create ({
 
         url: trimmedUrl
       
-      });
-  
-      console.log(`This is the input logged on inputText: ${inputText}`);
-
+      }); 
     }
+
+    return e;
+
+  });
+
+  console.log(`This is the input logged on inputText: ${e}`);
+  
   }
-  )
+
+  let inputText = createTabs.e;
 
   chrome.storage.local.set({ savedUrls : inputText }).then(() => {
 
-    console.log("value set");
+    console.log(`value sent to local storage: ${inputText}`);
 
   });
-}
-);
-
-
-
-  
