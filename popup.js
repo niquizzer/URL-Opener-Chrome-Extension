@@ -1,6 +1,5 @@
 let submit = document.getElementById("submit");
 let links = document.getElementById("linkBox");
-let e;
 
 document.addEventListener('DOMContentLoaded', async () => {
 
