@@ -1,0 +1,19 @@
+.section {
+
+    margin: 0 0 10px 0;
+    display: block;
+    unicode-bidi: isolate;
+
+}
+
+:root {
+
+    color-scheme: light dark;
+
+}
+
+textarea {
+
+    resize: none;
+    
+}

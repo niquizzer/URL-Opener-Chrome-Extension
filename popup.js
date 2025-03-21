@@ -10,11 +10,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       result.savedUrls.split('\n');
 
-      console.log(`Links formatted ${result.savedUrls}`);
-
-      links.innerText = result.savedUrls;
-
-      console.log(`Previous links returned: ${result.savedUrls}`);
+      links.value = result.savedUrls;
 
     }
   });
@@ -26,9 +22,6 @@ submit.addEventListener("click", createTabs);
 function createTabs() {
   
   let e = links.value;
-
-  console.log(`the current e value is ${e}`);
-
   let urls = e.split('\n');
 
   urls.forEach((url) => {

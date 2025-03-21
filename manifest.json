@@ -18,6 +18,9 @@
             ],
             "html" : [
                 "popup.html"
+            ],
+            "css" : [
+                "popup.css"
             ]
         }
     ]
