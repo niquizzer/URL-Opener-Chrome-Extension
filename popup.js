@@ -1,5 +1,6 @@
 let submit = document.getElementById("submit");
 let links = document.getElementById("linkBox");
+let e;
 
 document.addEventListener('DOMContentLoaded', async () => {
 
@@ -17,17 +18,16 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     }
   });
-
 });
 
 submit.addEventListener("click", createTabs);
 
 //Create new chrome tab function
-function createTabs(e) {
-
-  console.log('createTabs function executed');
+function createTabs() {
   
-  e = links.value;
+  let e = links.value;
+
+  console.log(`the current e value is ${e}`);
 
   let urls = e.split('\n');
 
@@ -44,18 +44,17 @@ function createTabs(e) {
       }); 
     }
 
-    return e;
-
   });
 
-  console.log(`This is the input logged on inputText: ${e}`);
+  console.log(e);
+
+  chrome.storage.local.set({ savedUrls : e }).then(() => {
+
+    console.log(`value sent to local storage: ${e}`);
+
+  });
   
+  return e;
+
   }
 
-  let inputText = createTabs.e;
-
-  chrome.storage.local.set({ savedUrls : inputText }).then(() => {
-
-    console.log(`value sent to local storage: ${inputText}`);
-
-  });
