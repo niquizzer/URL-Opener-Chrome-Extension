@@ -1,7 +1,11 @@
 let submit = document.getElementById("submit");
 let links = document.getElementById("linkBox");
 let save = document.getElementById("save");
-let listName = prompt;
+let load = document.getElementById("load");
+
+let listName;
+let oldSaves;
+
 
 document.addEventListener('DOMContentLoaded', async () => {
 
@@ -22,32 +26,49 @@ save.addEventListener("click", saveList);
 
 function saveList () {
 
-let oldSaves;
 let saveInfo = links.value;
 
-if (saveInfo) {
+if (!saveInfo) {
+
+  alert("Nothing to save");
+
+  return;
+
+} else if (saveInfo) {
 
   listName = prompt("What would you like to name this list?");
 
-  console.log(`You named your saved list ${listName}`);
+  if (listName) {
 
-  chrome.storage.local.get(["savedUrls"]).then((result) => {
+    let result = confirm(`Are you sure you want to name your list ${listName}`);
 
-  oldSaves = result.savedUrls.value;
+    if(result) {
 
-  });
+      chrome.storage.local.set({savedLists : listName, savedValues : saveInfo }).then(() => {
+
+        alert(`${listName} has been saved as the list name with ${saveInfo} as the links.`);
+
+      }) 
+
+    }
+  
+  } else {
+
+    alert("No name entered");
+
+    return;
+  
+  }
 
 } else return;
 
-  if (listName == oldSaves) {
-    
-    let overwrite = confirm("Overwrite exising list?");
 
-  } else if (listName == null) {
 
-    return;
+}
 
-  }
+function loadlist () {
+
+
 
 }
 
