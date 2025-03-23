@@ -44,11 +44,20 @@ if (!saveInfo) {
 
     if(result) {
 
-      chrome.storage.local.set({savedLists : listName, savedValues : saveInfo }).then(() => {
+      chrome.storage.local.get(["savedLists"]).then((result) => {
 
-        alert(`${listName} has been saved as the list name with ${saveInfo} as the links.`);
+        let savedLists = result.savedLists || {}; // make sure we have an object
+      
+        savedLists[listName] = saveInfo; // add or update the list
+      
+      chrome.storage.local.set({ savedLists }).then(() => {
 
-      }) 
+          alert(`${listName} has been saved.`);
+
+        });
+      
+      });
+      
 
     }
   
@@ -60,10 +69,7 @@ if (!saveInfo) {
   
   }
 
-} else return;
-
-
-
+}
 }
 
 function loadlist () {
